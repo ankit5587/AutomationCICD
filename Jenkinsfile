@@ -12,11 +12,8 @@ pipeline {
                     sh '''M2_HOME=\'/opt/apache-maven-3.6.3\'
                     PATH="$M2_HOME/bin:$PATH"
                     export PATH'''
-
-                    },
-                     steps {
-                                            sh 'mvn clean test'
-                                        }
+                    sh 'mvn clean test'
+                    }
                 }
     }
 }
