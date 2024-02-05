@@ -2,10 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Git Pull') {
             steps {
-                echo 'Hello World '
+                git branch: 'main', credentialsId: 'JenkinsDemo', url: 'https://github.com/ankit5587/AutomationCICD.git'
             }
         }
+         stage('Run Tests') {
+                    steps {
+                        sh 'mvn clean test'
+                    }
+                }
     }
 }
