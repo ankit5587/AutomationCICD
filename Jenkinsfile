@@ -13,6 +13,12 @@ pipeline {
         }
          stage('docker build') {
                             steps {
+                            sh '''
+                            docker info
+                            docker version
+                            docker compose version
+                            curl --version
+                            '''
                             sh 'chmod -R 777 docker-compose.yml'
                             sh 'docker-compose up'
                             }
