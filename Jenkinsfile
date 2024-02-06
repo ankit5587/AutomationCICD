@@ -16,6 +16,11 @@ pipeline {
                     sh 'mvn -B -DskipTests clean package'
                     }
                 }
+                stage('docker compose up') {
+                                    steps {
+                                    sh 'docker-compose up'
+                                    }
+                                }
              stage('Test') {
                         steps {
                         sh 'mvn clean test'
