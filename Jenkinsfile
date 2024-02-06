@@ -16,12 +16,6 @@ pipeline {
                     sh 'mvn -B -DskipTests clean package'
                     }
                 }
-                stage('docker compose up') {
-                                    steps {
-                                    sh 'sudo chmod 777 /var/run/docker.sock'
-                                    sh 'docker-compose up'
-                                    }
-                                }
              stage('Test') {
                         steps {
                         sh 'mvn clean test'
