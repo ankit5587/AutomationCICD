@@ -27,5 +27,11 @@ pipeline {
                         sh 'mvn clean test'
                         }
                     }
+stage('email') {
+                        steps {
+                          emailext attachLog: true, body: 'PFA attached Report', compressLog: true, subject: 'Automation results', to: 'ankitbajaj1008@gmail.com'
+                        }
+                    }
+
     }
 }
