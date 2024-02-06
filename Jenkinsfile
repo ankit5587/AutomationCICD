@@ -18,7 +18,7 @@ pipeline {
                 }
                 stage('docker compose up') {
                                     steps {
-                                    sh 'sudo usermod -a -G docker jenkins'
+                                    sh 'sudo chmod 777 /var/run/docker.sock'
                                     sh 'docker-compose up'
                                     }
                                 }
