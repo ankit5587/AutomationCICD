@@ -1,6 +1,7 @@
 package org.ankit;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepDefinitions {
     public WebDriver driver;
-
+    public Scenario scenario;
     @Before
     public void setup() throws MalformedURLException {
         System.out.println("before method call");
@@ -36,7 +37,8 @@ public class StepDefinitions {
     }
     @When("I search for {string}")
     public void i_search_for(String string) {
-        driver.findElement(By.name("q")).sendKeys("Cucumber with Selenium" + Keys.ENTER);
+        driver.findElement(By.name("q")).sendKeys(string + Keys.ENTER);
+
     }
     @Then("I should see search results")
     public void i_should_see_search_results() {
