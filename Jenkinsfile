@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Archive Results') {
             steps {
-                sh 'archiveArtifacts artifacts: "target/Reports/report.*", followSymlinks: false'
+                archiveArtifacts artifacts: '**/*report.*'
             }
         }
     }
