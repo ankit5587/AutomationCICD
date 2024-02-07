@@ -23,7 +23,6 @@ pipeline {
                 sh 'chmod -R 777 docker-compose.yml'
                 sh 'docker compose up -d'
                 echo 'Docker-compose-build Build Image Completed'
-                sh 'docker ps'
             }
         }
         stage('build') {
@@ -36,12 +35,15 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
-
+        stage('Archive Results') {
+            steps {
+                sh 'archiveArtifacts artifacts: \'target/Reports/*html\', followSymlinks: false'
+            }
+        }
     }
     post {
         always {
             sh 'docker compose down'
-            sh 'docker ps'
             emailext attachLog: true, body: 'PFA attached Report', compressLog: true, subject: 'Automation results', to: 'ankitbajaj1008@gmail.com'
         }
     }
