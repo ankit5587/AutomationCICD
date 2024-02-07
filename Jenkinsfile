@@ -40,6 +40,12 @@ pipeline {
                 archiveArtifacts artifacts: '**/*report.*'
             }
         }
+        stage('cucumber reports') {
+            steps {
+                cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/Reports/report.json', pendingStepsNumber: -1, reportTitle: 'Automation Reports', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+            }
+        }
+
     }
     post {
         always {
