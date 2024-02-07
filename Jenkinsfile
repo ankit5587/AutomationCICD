@@ -21,7 +21,7 @@ pipeline {
                             curl --version
                             '''
                             sh 'chmod -R 777 docker-compose.yml'
-                            sh 'docker compose up'
+                            sh 'docker compose up -d'
                             echo 'Docker-compose-build Build Image Completed'
                             }
                         }
